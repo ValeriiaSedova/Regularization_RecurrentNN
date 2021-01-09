@@ -1,6 +1,6 @@
-import numpy as np
+from .Base import BaseLayer
 
-class ReLU:
+class ReLU(BaseLayer):
 
     def __init__(self):
         pass

@@ -1,8 +1,8 @@
 from matplotlib.pyplot import axis
 import numpy as np
-from numpy.core.numeric import True_
+from .Base import BaseLayer
 
-class SoftMax:
+class SoftMax(BaseLayer):
 
     def __init__(self):
         pass

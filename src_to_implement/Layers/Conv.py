@@ -1,7 +1,8 @@
+from src_to_implement.Layers.Base import BaseLayer
 import numpy as np
 from scipy import signal
 
-class Conv:
+class Conv(BaseLayer):
 
     def __init__(self, stride_shape, convolution_shape, num_kernels):
         self.stride_shape = stride_shape

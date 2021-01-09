@@ -1,4 +1,6 @@
-class Flatten:
+from .Base import BaseLayer
+
+class Flatten(BaseLayer):
     
     def __init__(self):
         self.input_shape = None

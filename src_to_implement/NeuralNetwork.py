@@ -11,6 +11,7 @@ class NeuralNetwork:
         self.label_tensor = None
         self.weights_initializer = weights_initializer
         self.bias_initializer = bias_initializer
+        self._phase = False
 
     def forward(self):
         self.input_tensor, self.label_tensor = self.data_layer.next()
@@ -32,15 +33,30 @@ class NeuralNetwork:
         self.layers.append(layer)
 
     def train(self, iterations):
+        self.phase = False
         for _ in range(iterations):
             loss = self.forward()
             error_tensor = self.backward()
             self.loss.append(loss)
 
     def test(self, input_tensor):
+        self.phase = True
         prediction = input_tensor
         for layer in self.layers:
             prediction = layer.forward(prediction)
         return prediction
+
+
+    @property
+    def phase(self):
+        return self._phase
+
+    @phase.setter
+    def phase(self, phase):
+        self._phase = phase
+        for layer in self.layers:
+            layer.testing_phase = phase
+
+
 
     
