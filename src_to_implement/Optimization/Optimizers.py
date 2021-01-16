@@ -4,9 +4,16 @@ class Optimizer:
         
     def __init__(self):
         self.regularizer = None
+        self.learning_rate = None
 
     def add_regularizer(self, regularizer):
         self.regularizer = regularizer
+
+    def reg(self, weights):
+        if self.regularizer != None:
+            return weights - self.learning_rate * self.regularizer.calculate_gradient(weights)
+        else:
+            return weights
 
 
 class Sgd(Optimizer):
@@ -15,7 +22,7 @@ class Sgd(Optimizer):
         self.learning_rate = learning_rate
 
     def calculate_update(self, weight_tensor, gradient_tensor):
-        return weight_tensor - self.learning_rate * gradient_tensor
+        return self.reg(weight_tensor) - self.learning_rate * gradient_tensor
 
 class SgdWithMomentum(Optimizer):
     
@@ -26,7 +33,7 @@ class SgdWithMomentum(Optimizer):
 
     def calculate_update(self, weight_tensor, gradient_tensor):
         self.vk = self.momentum_rate * self.vk - self.learning_rate * gradient_tensor
-        return weight_tensor + self.vk
+        return self.reg(weight_tensor) + self.vk
 
 class Adam(Optimizer):
 
@@ -44,7 +51,7 @@ class Adam(Optimizer):
         vk_hat = self.vk / (1 - self.mu**self.k)  
         rk_hat = self.rk / (1 - self.rho**self.k)
         self.k += 1
-        return weight_tensor - self.learning_rate * (vk_hat / (np.sqrt(rk_hat) + np.finfo(np.float64).eps))
+        return self.reg(weight_tensor) - self.learning_rate * (vk_hat / (np.sqrt(rk_hat) + np.finfo(np.float64).eps))
 
 
 

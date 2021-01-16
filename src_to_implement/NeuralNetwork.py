@@ -18,7 +18,11 @@ class NeuralNetwork:
         activation = self.input_tensor
         for layer in self.layers:
             activation = layer.forward(activation)
-        return self.loss_layer.forward(activation, self.label_tensor)
+        loss = self.loss_layer.forward(activation, self.label_tensor)
+        if self.optimizer.regularizer != None:
+            for layer in self.layers:
+                loss += self.optimizer.regularizer.norm(layer.weights)
+        return loss
 
     def backward(self):
         back_tensor = self.loss_layer.backward(self.label_tensor)
