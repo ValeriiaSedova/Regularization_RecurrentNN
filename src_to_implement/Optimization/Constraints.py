@@ -20,4 +20,4 @@ class L1_Regularizer:
         return self.alpha * np.sign(weights)
 
     def norm(self, weights):
-        return self.alpha * np.abs(weights)
+        return self.alpha * np.sum(np.abs(weights))
