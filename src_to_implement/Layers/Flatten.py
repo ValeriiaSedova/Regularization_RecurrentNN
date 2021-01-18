@@ -7,6 +7,8 @@ class Flatten(BaseLayer):
 
     def forward(self, input_tensor):
         self.input_shape = input_tensor.shape
+        if len(input_tensor.shape)==2:
+            return input_tensor
         b, c, x, y = self.input_shape
         output_tensor = input_tensor.reshape(b, c*x*y)
         return output_tensor

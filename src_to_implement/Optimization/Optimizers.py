@@ -19,6 +19,7 @@ class Optimizer:
 class Sgd(Optimizer):
 
     def __init__(self, learning_rate:float):
+        super().__init__()
         self.learning_rate = learning_rate
 
     def calculate_update(self, weight_tensor, gradient_tensor):
@@ -27,6 +28,7 @@ class Sgd(Optimizer):
 class SgdWithMomentum(Optimizer):
     
     def __init__(self, learning_rate, momentum_rate):
+        super().__init__()
         self.learning_rate = learning_rate
         self.momentum_rate = momentum_rate
         self.vk = 0
@@ -38,6 +40,7 @@ class SgdWithMomentum(Optimizer):
 class Adam(Optimizer):
 
     def __init__(self, learning_rate, mu, rho):
+        super().__init__()
         self.learning_rate = learning_rate
         self.mu = mu
         self.rho = rho

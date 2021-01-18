@@ -1,9 +1,9 @@
 # DeepLearningex3
 
 - [x][x] Regularization: refactoring
-- [x][] Optimization constraints
-- [x][] Dropout
-- [][] Batch normalization
+- [x][x] Optimization constraints
+- [x][x] Dropout
+- [][x] Batch normalization (check plagiarism)
 - [][] LeNet(optional)
 - [][] Recurrent Layers: activation functions
 - [][] Elman RNN
