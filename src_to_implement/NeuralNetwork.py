@@ -21,7 +21,10 @@ class NeuralNetwork:
         loss = self.loss_layer.forward(activation, self.label_tensor)
         if self.optimizer.regularizer != None:
             for layer in self.layers:
-                loss += self.optimizer.regularizer.norm(layer.weights)
+                try:
+                    loss += self.optimizer.regularizer.norm(layer.weights)
+                except:
+                    pass
         return loss
 
     def backward(self):
