@@ -10,7 +10,7 @@ class BatchNormalization(Base.BaseLayer):
         self.channels = channels
         self.mu = 0
         self.sigma = 0
-        self.initialize('please','kill me')
+        self.initialize('place','holder')
         self._optimizer = None
         self._optimizerbias = None
 

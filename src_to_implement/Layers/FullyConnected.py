@@ -9,7 +9,8 @@ class FullyConnected(BaseLayer):
         self.weights = np.random.random([self.input_size + 1, self.output_size])
         self._optimizer = None
         self._gradient_weights = None
-
+    
+    # Set the input tensor from RNN list (save them)
     def forward(self, input_tensor):
         height, width = input_tensor.shape
         self.input_tensor = np.concatenate((input_tensor, np.ones([height, 1])), axis = 1)

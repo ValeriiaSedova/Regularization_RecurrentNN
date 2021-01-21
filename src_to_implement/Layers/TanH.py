@@ -10,7 +10,8 @@ class TanH(BaseLayer):
     def forward(self, input_tensor):
         self.activation = np.tanh(input_tensor)
         return self.activation
-
+    
+    # Set the activation from RNN list (save them)
     def backward(self, error_tensor):
         derivative = 1 - self.activation**2
         return derivative * error_tensor

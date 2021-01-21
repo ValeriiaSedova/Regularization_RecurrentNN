@@ -5,7 +5,7 @@
 - [x][x] Dropout
 - [x][x] Batch normalization (check plagiarism)
 - [x][x] Recurrent Layers: activation functions
-- [][] Elman RNN
-- [][] Test, Debug, Finish and Deploy
+- [x][x] Elman RNN
+- [x][x] Test, Debug, Finish and Deploy
 - [][] LSTM (optional)
 - [][] LeNet(optional)
